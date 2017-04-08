@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<action-controller>
+	<interceptor>
+			<name>logWriter</name>
+			<class>
+				<name>com.yuanhao.interceptor.LogWriter</name>
+				<method>log</method>
+			</class>
+	</interceptor>
+	<action>
+		<name>login</name>
+		<class>
+			<name>com.yuanhao.action.LoginAction</name>
+			<method>execute</method>
+		</class>
+		<result>
+			<name>success</name>
+			<type>forward</type>
+			<value>pages/success_view.xml</value>
+		</result>
+		<result>
+			<name>fail</name>
+			<type>redirect</type>
+			<value>pages/login_fail.jsp</value>
+		</result>
+		<interceptor-ref>
+				<name>logWriter</name>
+		</interceptor-ref>
+	</action>
+	
+	<action>
+        <name>register</name>
+        <class>
+            <name>com.yuanhao.action.RegisterAction</name>
+            <method>execute</method>
+        </class>
+        <result>
+        	<name>success</name>
+        	<type>forward</type>
+        	<value>pages/register_success.jsp</value>
+        </result>
+        <result>
+			<name>fail</name>
+			<type>redirect</type>
+			<value>pages/register_fail.jsp</value>
+		</result>
+        <interceptor-ref>
+				<name>logWriter</name>
+		</interceptor-ref>
+        <!-- other results  -->
+    </action>
+    <!-- other results -->
+</action-controller>
